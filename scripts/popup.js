@@ -25,7 +25,7 @@ const togglePopup = function () {
 
 popupOpenButton.addEventListener('click', togglePopup);
 popupCloseButton.addEventListener('click', togglePopup);
-popup.addEventListener('click', togglePopup); 
+
 
 
 
