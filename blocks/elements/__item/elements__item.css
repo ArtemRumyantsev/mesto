@@ -1,0 +1,11 @@
+.elements__item {
+    max-width: 282px;
+    width: 100%;
+    height: 361px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
