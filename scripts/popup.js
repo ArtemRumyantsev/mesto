@@ -7,15 +7,10 @@ const jobInput = document.querySelector('.poput__field_profession');
 const profileName = document.querySelector('.profile__title');
 const profileInfo = document.querySelector('.profile__subtitle');
 
-
-
-
-
 function formSubmitHandler (evt) {
     evt.preventDefault();
     addPlaceholder();
-    popup.classList.toggle('popup');
-    popup.classList.toggle('popup__opened');
+    popup.classList.toggle('popup__opened'); 
 }
 
 function addPlaceholder() {
@@ -24,17 +19,13 @@ function addPlaceholder() {
   }
   formElement.addEventListener('submit', formSubmitHandler);
    
-
-
 const togglePopup = function () {
-    popup.classList.toggle('popup');
+    popup.classList.toggle('popup__opened');
 }
 
+popupOpenButton.addEventListener('click', togglePopup);
+popupCloseButton.addEventListener('click', togglePopup);
+popup.addEventListener('click', togglePopup); 
 
-popupOpenButton.addEventListener('click', function() {
-    popup.classList.toggle('popup');
-});
 
-popupCloseButton.addEventListener('click', function() {
-    popup.classList.toggle('popup');
-});
+
