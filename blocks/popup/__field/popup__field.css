@@ -5,4 +5,11 @@
     border-left: 0;
     border-right: 0;
     margin-bottom: 30px;
+    padding-bottom: 13px;
+}
+
+@media screen and (max-width: 520px) {
+    .popup__field {
+        max-width: 238px;
+    }
 }

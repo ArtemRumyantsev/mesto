@@ -10,21 +10,34 @@ const profileInfo = document.querySelector('.profile__subtitle');
 function formSubmitHandler (evt) {
     evt.preventDefault();
     addPlaceholder();
-    popup.classList.toggle('popup__opened'); 
+    closePopup();
 }
 
 function addPlaceholder() {
     profileName.textContent = nameInput.value
     profileInfo.textContent = jobInput.value
   }
-  formElement.addEventListener('submit', formSubmitHandler);
+
+formElement.addEventListener('submit', formSubmitHandler);
    
-const togglePopup = function () {
-    popup.classList.toggle('popup__opened');
+const openPopup = function () {
+    const userName = profileName.textContent;
+    const userInfo = profileInfo.textContent;
+    if (userName) {
+        nameInput.value = userName;
+    };
+    if (userInfo) {
+        jobInput.value = userInfo;
+    }
+    popup.classList.add('popup__opened');
 }
 
-popupOpenButton.addEventListener('click', togglePopup);
-popupCloseButton.addEventListener('click', togglePopup);
+const closePopup = function () {
+    popup.classList.remove('popup__opened');
+}
+
+popupOpenButton.addEventListener('click', openPopup);
+popupCloseButton.addEventListener('click', closePopup);
 
 
 
