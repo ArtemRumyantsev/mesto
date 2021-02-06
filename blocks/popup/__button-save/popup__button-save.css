@@ -13,3 +13,14 @@
     border: 0;
     border-radius: 2px;
 }
+
+.popup__button-save:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 560px) {
+.popup__button-save {
+    width: 238px;
+}
+}
