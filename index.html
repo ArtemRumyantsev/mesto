@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./pages/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
+    <script src="./scripts/popup.js" defer></script>
 </head>
 <body class="page">
     <div class="page__container">
@@ -26,40 +27,46 @@
             </button>
         </section>
         <section class="elements">
-            <div class="elements__item">
+            <!--<div class="elements__item">
                 <img src="./images/kirill-pershin-1088404-unsplash.png" class="elements__photo" alt="Карачаевск">
+                <button class="elements__button-delete" type="button"></button>
                 <h3 class="elements__title">Карачаевск</h3>
                 <button class="elements__button-like" type="button"></button>
             </div>
             <div class="elements__item">
                 <img src="./images/kirill-pershin-1404681-unsplash.png" class="elements__photo" alt="Гора Эльбрус">
+                <button class="elements__button-delete" type="button"></button>
                 <h3 class="elements__title">Гора Эльбрус</h3>
                 <button class="elements__button-like" type="button"></button>
             </div>
             <div class="elements__item">
                 <img src="./images/kirill-pershin-1556355-unsplash.png" class="elements__photo" alt="Домбай">
+                <button class="elements__button-delete" type="button"></button>
                 <h3 class="elements__title">Домбай</h3>
                 <button class="elements__button-like" type="button"></button>
             </div>
             <div class="elements__item">
                 <img src="./images/kirill-pershin-1404681-unsplash.png" class="elements__photo" alt="Гора Эльбрус">
+                <button class="elements__button-delete" type="button"></button>
                 <h3 class="elements__title">Гора Эльбрус</h3>
                 <button class="elements__button-like" type="button"></button>
             </div>
             <div class="elements__item">
                 <img src="./images/kirill-pershin-1556355-unsplash.png" class="elements__photo" alt="Домбай">
+                <button class="elements__button-delete" type="button"></button>
                 <h3 class="elements__title">Домбай</h3>
                 <button class="elements__button-like" type="button"></button>
             </div>
             <div class="elements__item">
                 <img src="./images/kirill-pershin-1088404-unsplash.png" class="elements__photo" alt="Карачаево-Черкессия">
+                <button class="elements__button-delete" type="button"></button>
                 <h3 class="elements__title">Карачаево-Черкессия</h3>
-                <button class="elements__button-like" type="button"></button>
-            </div>
+                <button class="elements__button-like " type="button"></button>
+            </div>-->
         </section>
     </main>
     <footer class="footer">
-        <p class="footer__copyright">© 2020 Румянцев Артём</p>
+        <p class="footer__copyright">© 2021 Румянцев Артём</p>
     </footer>
     <div class="popup">
             <div class="popup__container">
@@ -72,7 +79,25 @@
             </form>
         </div>
     </div>
+
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__button-close" type="button"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__input" name="popup">
+                <input type="text" class="popup__field popup__field_name" name="name"  placeholder="Название" required>
+                <input type="text" class="popup__field popup__field_profession" name="profession"  placeholder="Ссылка на" required>
+            <button class="popup__button-save" type="submit">Создать</button>
+        </form>
     </div>
-    <script src="./scripts/popup.js"></script>
+</div>
+    </div>
+    <template class="template">
+        <div class="elements__item">
+            <img src="./images/kirill-pershin-1088404-unsplash.png" class="elements__photo" alt="Карачаевск">
+            <h3 class="elements__title"></h3>
+            <button class="elements__button-like elements__button-like-active" type="button"></button>
+        </div>
+    </template>
 </body>
 </html>
