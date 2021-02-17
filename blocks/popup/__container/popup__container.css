@@ -18,9 +18,3 @@
     padding-bottom: 39px;
 }
 }
-
-@media screen and (max-width: 320px) {
-    .popup__container {
-        background:  rgba(0, 0, 0, 0);
-    }
-    }
