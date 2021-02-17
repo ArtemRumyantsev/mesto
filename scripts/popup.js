@@ -1,12 +1,19 @@
-const popup = document.querySelector('.popup');
+const popupProfile = document.querySelector('.popup__profile');
+const popupPhoto = document.querySelector('.popup__photo');
+const popupImage = document.querySelector('.popup__image');
+const popupPicture = document.querySelector('.popup__picture');
+const popupImageText = document.querySelector('.popup__picture-text');
 const popupOpenButton = document.querySelector('.profile__button-editor');
 const popupOpenPhotoBtn = document.querySelector('.profile__button'); // добавил кнопку для открытия попапа с картинками
-const popupCloseButton = document.querySelector('.popup__button-close');
+const popupCloseButtons = document.querySelectorAll('.popup__button-close');
 const formElement = document.querySelector('.popup__input');
 const nameInput = document.querySelector('.popup__field_name');
 const jobInput = document.querySelector('.popup__field_profession');
 const profileName = document.querySelector('.profile__title');
 const profileInfo = document.querySelector('.profile__subtitle');
+const popupInputPhoto = document.querySelector('.popup__input-photo')
+const titleInput = document.querySelector('.popup__field-title');
+const linkInput = document.querySelector('.popup__field-link');
 
 
 const initialCards = [ //Начало кода, п.1 проект 5
@@ -40,11 +47,7 @@ const elementsContainer = document.querySelector('.elements');
 const templateEL = document.querySelector('.template'); //ссылка на template element
 
   function render() {
-    const stringHtml = initialCards
-        .map(getItemHTML)
-        .join('')
-
-        elementsContainer.insertAdjacentHTML('afterbegin', stringHtml ) 
+    initialCards.forEach(getItem);
   }
 
 function getItemHTML(item) {
@@ -57,26 +60,30 @@ function getItemHTML(item) {
 }
 
 function getItem(item) {
-    const newItem = templateEL.content.cloNode(true) //клонируем template element. Передаём true , чтобы скопировать всю структуру template элемента
+    const newItem = templateEL.content.cloneNode(true) //клонируем template element. Передаём true , чтобы скопировать всю структуру template элемента
     const headerEl = newItem.querySelector('.elements__title') //находим header , куда будем передовать title
     const photoEl = newItem.querySelector('.elements__photo') //находим фото, куда будем передавать картинки с карточек
-    photoEl.src = item.link; // НЕ РАБОТАЕТ!!
-    photoEl.alt = item.name; // НЕ РАБОТАЕТ!!
+    photoEl.src = item.link; 
+    photoEl.alt = item.name; 
     headerEl.textContent = item.name;
 
     const removeBtn = newItem.querySelector('.elements__button-delete') //получаем ссылку на кнопку удаления
     removeBtn.addEventListener('click', cardDelete); //слушатель от функции carDelete вызывается в методе getItem
 
     newItem.querySelector('.elements__button-like').addEventListener('click', function (evt) { // выбрал элемент кнопки сердца и добавил ему обработчик
-        evt.target.classList.toggle('elements__button-like-active'); //переключение кнопки лайк
+        evt.target.classList.toggle('elements__button-like-active'); //переключение кнопки лайк ИСПРАВИТЬ КАРТИНКу
     });
-
-    return newItem;
+    photoEl.addEventListener('click', function(evt) {
+      popupPicture.src = item.link;
+      popupImageText.textContent = item.name;
+      popupImage.classList.toggle('popup__opened');
+    });
+    elementsContainer.appendChild(newItem);
 }
 
 
 
-render (); //Конец кода п.1 проект 5
+render(); //Конец кода п.1 проект 5
 
 function cardDelete(event) {
     const targetEl = event.target; // хранится ссылка на того, кто вызвал
@@ -101,7 +108,7 @@ function addPlaceholder() {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-const openPopup = function () {
+const openPopupProfile = function () {
     const userName = profileName.textContent;
     const userInfo = profileInfo.textContent;
     if (userName) {
@@ -110,21 +117,41 @@ const openPopup = function () {
     if (userInfo) {
         jobInput.value = userInfo;
     }
-    popup.classList.add('popup__opened');
+    popupProfile.classList.add('popup__opened');
 }
 
-const closePopup = function () {   
+const closePopup = function (evt) {
+    const targetEl = evt.target;
+    const popup = targetEl.closest('.popup');
     popup.classList.remove('popup__opened');
 }
 
-/*const openPopupPhoto = function () {   // Задаю функцию для открытия 2го попапа с картинками
-    popup.classList.toggle('popup__opened') // НЕ РАБОТАЕТ
+const openPopupPhoto = function () {   // Задаю функцию для открытия 2го попапа с картинками
+  popupPhoto.classList.toggle('popup__opened') 
 }
-openPopupPhoto (); // !!
-*/
 
-popupOpenButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
+function addCard (evt) {
+  evt.preventDefault();
+  const title = titleInput.value;
+  const link = linkInput.value;
+  const newCard = templateEL.content.cloneNode(true)
+  const titleEl = newCard.querySelector('.elements__title')
+  const linkEl = newCard.querySelector('.elements__photo')
+  linkEl.src = link;
+  titleEl.textContent = title;
+  const firstCard = elementsContainer.childNodes[0];
+  elementsContainer.insertBefore(newCard, firstCard);
+
+}
+
+popupOpenButton.addEventListener('click', openPopupProfile);
+popupOpenPhotoBtn.addEventListener('click', openPopupPhoto);
+
+popupCloseButtons.forEach(function(closeBtn) {
+  closeBtn.addEventListener('click', closePopup);
+})
+
+popupInputPhoto.addEventListener('submit', addCard);
 
 
 

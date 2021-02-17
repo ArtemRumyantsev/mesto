@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="./pages/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <script src="./scripts/popup.js" defer></script>
 </head>
 <body class="page">
     <div class="page__container">
@@ -68,36 +67,44 @@
     <footer class="footer">
         <p class="footer__copyright">© 2021 Румянцев Артём</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__profile">
             <div class="popup__container">
                 <button class="popup__button-close" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__input" name="popup">
                     <input type="text" class="popup__field popup__field_name" name="name"  placeholder="Имя" required>
                     <input type="text" class="popup__field popup__field_profession" name="profession"  placeholder="Профессия" required>
-                <button class="popup__button-save" type="submit">Сохранить</button>
-            </form>
-        </div>
+                    <button class="popup__button-save" type="submit">Сохранить</button>
+                </form>
+             </div>
     </div>
 
-    <div class="popup">
+    <div class="popup popup__photo">
         <div class="popup__container">
             <button class="popup__button-close" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__input" name="popup">
-                <input type="text" class="popup__field popup__field_name" name="name"  placeholder="Название" required>
-                <input type="text" class="popup__field popup__field_profession" name="profession"  placeholder="Ссылка на" required>
-            <button class="popup__button-save" type="submit">Создать</button>
-        </form>
+            <form class="popup__input popup__input-photo" name="popup">
+                <input type="text" class="popup__field popup__field-title" name="name"  placeholder="Название" required>
+                <input type="text" class="popup__field popup__field-link" name="profession"  placeholder="Ссылка на картинку" required>
+                <button class="popup__button-save" type="submit">Создать</button>
+            </form>
+        </div>
     </div>
-</div>
+    <div class="popup popup__image">
+        <div class="popup__container">
+            <button class="popup__button-close" type="button"></button>
+            <img class="popup__picture">
+            <p class="popup__picture-text"></p>
+        </div>
     </div>
     <template class="template">
         <div class="elements__item">
             <img src="./images/kirill-pershin-1088404-unsplash.png" class="elements__photo" alt="Карачаевск">
+            <button class="elements__button-delete" type="button"></button>
             <h3 class="elements__title"></h3>
-            <button class="elements__button-like elements__button-like-active" type="button"></button>
+            <button class="elements__button-like" type="button"></button>
         </div>
     </template>
+    <script src="./scripts/popup.js"></script>
 </body>
 </html>

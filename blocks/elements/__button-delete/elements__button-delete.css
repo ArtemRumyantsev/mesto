@@ -10,5 +10,6 @@
     right: 10px;
     outline: none;
     cursor: pointer;
+    border: none;
     transition: opacity 1s linear;
 } 
