@@ -40,7 +40,7 @@ function getItem(item) {
     });
   photoEl.addEventListener('click', function(evt) {
     popupPicture.src = item.link;
-    popupPicture.alt = 'Фотография';
+    popupPicture.alt = item.name;
     popupImageText.textContent = item.name;
     
     openPopup(popupImage);
@@ -85,8 +85,8 @@ function addPlaceholder() {
 formElement.addEventListener('submit', formSubmitHandler);
 
 const openPopupProfile = function () {
-  const userName = profileName.textContent;
-  const userInfo = profileInfo.textContent;
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileInfo.textContent;
     openPopup(popupProfile);
 }
 
