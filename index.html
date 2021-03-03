@@ -35,9 +35,11 @@
             <div class="popup__container">
                 <button class="popup__button-close" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__input" name="popup">
-                    <input type="text" class="popup__field popup__field_name" name="name"  placeholder="Имя" required>
-                    <input type="text" class="popup__field popup__field_profession" name="profession"  placeholder="Профессия" required>
+                <form class="popup__input" name="popup" novalidate> 
+                    <input type="text" class="popup__field popup__field_name" id="profile-name" name="name"  placeholder="Имя" minlength="2" maxlength="40" required>
+                    <span class="popup__error" id="profile-name-error"></span>
+                    <input type="text" class="popup__field popup__field_profession" id="profile-profession" name="profession"  placeholder="Профессия" minlength="2" maxlength="200" required >
+                    <span class="popup__error" id="profile-profession-error"></span>
                     <button class="popup__button-save" type="submit">Сохранить</button>
                 </form>
              </div>
@@ -46,9 +48,11 @@
         <div class="popup__container">
             <button class="popup__button-close" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__input popup__input-photo" name="popup">
-                <input type="text" class="popup__field popup__field-title" name="name"  placeholder="Название" required>
-                <input type="text" class="popup__field popup__field-link" name="profession"  placeholder="Ссылка на картинку" required>
+            <form class="popup__input popup__input-photo" name="popup" novalidate>
+                <input type="text" class="popup__field popup__field-title" id="named" name="name"  placeholder="Название" minlength="2" maxlength="30" required>
+                <span class="popup__error" id="named-error"></span>
+                <input type="url" class="popup__field popup__field-link" id="image-link" name="profession"  placeholder="Ссылка на картинку" required>
+               <span class="popup__error" id="image-link-error"></span>
                 <button class="popup__button-save" type="submit">Создать</button>
             </form>
         </div>
@@ -71,5 +75,6 @@
     </div>
     <script src="./scripts/initial-cards.js"></script>
     <script src="./scripts/popup.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
