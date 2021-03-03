@@ -1,3 +1,4 @@
+const overlay = document.querySelectorAll('.popup')
 const popupProfile = document.querySelector('.popup_profile'); //попап редактирования профиля
 const popupPhoto = document.querySelector('.popup_photo');  //попап добавления картинки
 const popupImage = document.querySelector('.popup_image');// открытие картинки при нажатии
@@ -56,11 +57,15 @@ function renderCard(data, wrap) {
 }
 
 function openPopup (popup) {
-  popup.classList.add('popup__opened'); //
+  popup.classList.add('popup__opened');
+  //Добааляем необходимый класс попапа и добавляем обработчик на ESC
+  document.addEventListener('keydown' , closeEsc)
 };
 
 function closePopup (popup) {
-  popup.classList.remove('popup__opened'); //
+  popup.classList.remove('popup__opened');
+  // удаляем класс и обработчик. Колбэком передаеv функцию, внутри которой проверяете keyCode
+  document.removeEventListener('keydown', closeEsc); 
 }; 
 
 render(); //Конец кода п.1 проект 5
@@ -108,6 +113,25 @@ function addCard (evt) {
   linkInput.value = '';
   closePopup(popupPhoto);
 }
+
+//функция закрытия попапа на esc
+function closeEsc (evt) {
+  if (evt.keyCode === 27) {
+   closePopup(document.querySelector('.popup__opened'))
+  }
+}
+
+//закрываем попам кликом на overlay
+overlay.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup__opened')) {
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__button-close')) {
+      closePopup(popup)
+    }
+  })
+})
 
 popupOpenButton.addEventListener('click', openPopupProfile);
 popupOpenPhotoBtn.addEventListener('click', () => openPopup(popupPhoto));
