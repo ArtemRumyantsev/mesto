@@ -51,7 +51,7 @@
             <form class="popup__input popup__input-photo" name="popup" novalidate>
                 <input type="text" class="popup__field popup__field-title" id="named" name="name"  placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__error" id="named-error"></span>
-                <input type="url" class="popup__field popup__field-link" id="image-link" name="profession"  placeholder="Ссылка на картинку" required>
+                <input type="url" class="popup__field popup__field-link" id="image-link" name="profession"  placeholder="Ссылка на картинку" required pattern="https://.*">
                <span class="popup__error" id="image-link-error"></span>
                 <button class="popup__button-save" type="submit">Создать</button>
             </form>
