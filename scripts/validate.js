@@ -34,7 +34,7 @@ const toggleBtnState = (inputList, buttonElement) => {
 //функция, при которой, хотя бы одно поле не валидно, становится disabled
 // проходимся по массиву методом some ( как только встретили невалидный элемент - вернёт true и дальше не идёт)
     const hasNotValidInput = inputList.some
-        (inputElement => inputElement.validity.valid);
+        (inputElement => !inputElement.validity.valid);
         
           //проверяем, если есть хоть 1 ошибка , кнопке добавляем атрибут disabled
         if (hasNotValidInput) {
@@ -67,6 +67,7 @@ const setEventListeners = (formElements) => {
            //вызываем функцию переключения кнопки и задаём саму кнопку
            toggleBtnState( inputList, buttonElement);
         })
+   
     })
     toggleBtnState( inputList, buttonElement);
 };
