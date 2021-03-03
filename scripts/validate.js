@@ -39,10 +39,10 @@ const toggleBtnState = (inputList, buttonElement) => {
           //проверяем, если есть хоть 1 ошибка , кнопке добавляем атрибут disabled
         if (hasNotValidInput) {
             buttonElement.setAttribute('disabled', true);
-            buttonElement.classList.add('.popup__button-disabled')
+            buttonElement.classList.add('popup__button-disabled')
         } else {
             buttonElement.removeAttribute('disabled');
-            buttonElement.classList.remove('.popup__button-disabled')
+            buttonElement.classList.remove('popup__button-disabled')
         }
 
 
