@@ -1,3 +1,4 @@
+
 //функция показывающая ошибку
 const showInputError = (formElements, inputElement, errorMessage) => {
     const errorElement = formElements.querySelector(`#${inputElement.id}-error`)
@@ -9,7 +10,7 @@ const showInputError = (formElements, inputElement, errorMessage) => {
 //функция скрывающая ошибку
 const hideInputError = (formElements, inputElement) => {
     const errorElement = formElements.querySelector(`#${inputElement.id}-error`)
-    errorElement.textContent = errorMessage;
+    errorElement.textContent = "";
     //удаляем класс
     errorElement.classList.remove('popup__error_active')
 }
