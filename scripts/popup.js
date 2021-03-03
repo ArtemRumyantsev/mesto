@@ -1,4 +1,4 @@
-const overlay = document.querySelectorAll('.popup')
+const overlays = document.querySelectorAll('.popup')
 const popupProfile = document.querySelector('.popup_profile'); //попап редактирования профиля
 const popupPhoto = document.querySelector('.popup_photo');  //попап добавления картинки
 const popupImage = document.querySelector('.popup_image');// открытие картинки при нажатии
@@ -101,7 +101,6 @@ const closePopupOnCross = function (evt) {
   closePopup(popup);
 }
 
-
 function addCard (evt) {
   evt.preventDefault();
   const title = titleInput.value;
@@ -122,7 +121,7 @@ function closeEsc (evt) {
 }
 
 //закрываем попам кликом на overlay
-overlay.forEach((popup) => {
+overlays.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup__opened')) {
       closePopup(popup)
@@ -135,11 +134,6 @@ overlay.forEach((popup) => {
 
 popupOpenButton.addEventListener('click', openPopupProfile);
 popupOpenPhotoBtn.addEventListener('click', () => openPopup(popupPhoto));
-
-popupCloseButtons.forEach(function(closeBtn) {
-  closeBtn.addEventListener('click', closePopupOnCross);
-})
-
 popupInputPhoto.addEventListener('submit', addCard);
 
 
