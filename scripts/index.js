@@ -102,7 +102,7 @@ function closePopup (popup) {
   document.removeEventListener('keydown', closeEsc); 
 }; 
 
- render(); //Конец кода п.1 проект 5
+// render(); //Конец кода п.1 проект 5
 
 
 
