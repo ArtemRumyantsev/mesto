@@ -51,10 +51,6 @@ export default class Card {
     this._photoPopup.classList.remove('popup__opened');
   }
 
-  _handleLikeBtn() {
-    this._cardLikeBtn.classList.toggle('elements__button-like-active')
-  }
-
   _handleDeleteCard(event) {
     const targetEl = event.target; // хранится ссылка на того, кто вызвал
     const targetItem = targetEl.closest('.elements__item');

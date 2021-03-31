@@ -3,9 +3,6 @@ import FormValidator from "./FormValidator.js"
 const overlays = document.querySelectorAll('.popup')
 const popupProfile = document.querySelector('.popup_profile'); //попап редактирования профиля
 const popupPhoto = document.querySelector('.popup_photo');  //попап добавления картинки
-const popupImage = document.querySelector('.popup_image');// открытие картинки при нажатии
-const popupPicture = document.querySelector('.popup__picture'); //сама картинка
-const popupImageText = document.querySelector('.popup__picture-text'); //текст под картинкой
 const popupOpenButton = document.querySelector('.profile__button-editor');
 const popupOpenPhotoBtn = document.querySelector('.profile__button'); // добавил кнопку для открытия попапа с картинками
 const formElement = document.querySelector('.popup__input');
@@ -56,12 +53,6 @@ const validationForms = {
 
 
 
-function render() {
-  initialCards.forEach((item) => {
-    renderCard(item, elementsContainer);
-  });
-  }
-
 function getItem(item) {
   const newItem = templateEL.content.cloneNode(true) //клонируем template element. Передаём true , чтобы скопировать всю структуру template элемента
   const headerEl = newItem.querySelector('.elements__title') //находим header , куда будем передовать title
@@ -101,10 +92,7 @@ function closePopup (popup) {
   // удаляем класс и обработчик. Колбэком передаеv функцию, внутри которой проверяете keyCode
   document.removeEventListener('keydown', closeEsc); 
 }; 
-
- render(); //Конец кода п.1 проект 5
-
-
+  
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
@@ -123,7 +111,6 @@ const openPopupProfile = function () {
   jobInput.value = profileInfo.textContent;
     openPopup(popupProfile);
 }
-
 
 
 function addCard (evt) {
