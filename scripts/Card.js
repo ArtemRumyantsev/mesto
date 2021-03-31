@@ -52,10 +52,10 @@ export default class Card {
   }
 
   _handleLikeBtn() {
-    this._cardLikeBtn;
+    this._cardLikeBtn.classList.toggle('elements__button-like-active')
   }
 
-  _handleDeleteCard = (event) => {
+  _handleDeleteCard(event) {
     const targetEl = event.target; // хранится ссылка на того, кто вызвал
     const targetItem = targetEl.closest('.elements__item');
     targetItem.remove();
@@ -76,10 +76,9 @@ export default class Card {
      this._handleClosePopup()
     });
 
-    cardLikeBtn.addEventListener('click', (evt) => {
-      evt.target.classList.toggle('elements__button-like-active')
-    });
-
+    cardLikeBtn.addEventListener('click', function (evt) { // выбрал элемент кнопки сердца и добавил ему обработчик
+      evt.target.classList.toggle('elements__button-like-active'); //переключение кнопки лайк 
+  });
     cardDeleteBtn.addEventListener('click', this._handleDeleteCard);
   } 
 }

@@ -1,5 +1,5 @@
 import Card from "./Card.js"
-import {FormValidator} from "./FormValidator.js"
+import FormValidator from "./FormValidator.js"
 const overlays = document.querySelectorAll('.popup')
 const popupProfile = document.querySelector('.popup_profile'); //попап редактирования профиля
 const popupPhoto = document.querySelector('.popup_photo');  //попап добавления картинки
@@ -102,7 +102,7 @@ function closePopup (popup) {
   document.removeEventListener('keydown', closeEsc); 
 }; 
 
-// render(); //Конец кода п.1 проект 5
+ render(); //Конец кода п.1 проект 5
 
 
 
@@ -117,7 +117,6 @@ function addPlaceholder() {
     profileInfo.textContent = jobInput.value
   }
 
-formElement.addEventListener('submit', formSubmitHandler);
 
 const openPopupProfile = function () {
   nameInput.value = profileName.textContent;
@@ -172,12 +171,12 @@ initialCards.forEach((item) => {
   document.querySelector('.elements').append(cardElement);
 })
 
-profileName.addEventListener('submit', formSubmitHandler);
-profileInfo.addEventListener('submit', addPlaceholder);
+formElement.addEventListener('submit', formSubmitHandler);
+popupInputPhoto.addEventListener('submit', addPlaceholder);
 
 
 
-const thisConstContainsClass = new FormValidator(validationForms, profileName);
-const thisConstContainsClass2 = new FormValidator(validationForms, profileInfo);
+const thisConstContainsClass = new FormValidator(validationForms, formElement);
+const thisConstContainsClass2 = new FormValidator(validationForms, popupInputPhoto);
 thisConstContainsClass.enableValidation();
 thisConstContainsClass2.enableValidation();
